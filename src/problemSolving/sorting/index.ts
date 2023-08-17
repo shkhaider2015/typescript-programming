@@ -57,3 +57,5 @@ const sortByCity = [...data].sort((a, b) =>  {
 } )
 console.table(data)
 console.table(sortByCity)
+
+export {}

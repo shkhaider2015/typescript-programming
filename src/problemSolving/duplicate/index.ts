@@ -11,7 +11,7 @@ interface IAddress {
     country: string;
 }
 
-const data1:IData[] = [
+const data:IData[] = [
     {
         id: 1,
         name: 'Shakeel Haider',
@@ -70,21 +70,54 @@ const data1:IData[] = [
 
 let index:number = 0;
 let newArray:IData[] = [];
-const dataLength:number = data1.length;
+const dataLength:number = data.length;
 
 for(let i=0; i<dataLength -1; i++)
 {
     for(let j=i+1; j<dataLength; j++)
     {
-        if(data1[i].id === data1[j].id)
+        if(data[i].id === data[j].id)
         {
-            newArray[index] = data1[i];
+            newArray[index] = data[i];
             index++;
         }
     }
 }
 
-console.log("============= Original Data ===================");
-console.table(data1)
-console.log("============= Duplicates ===================");
-console.table(newArray)
+console.log("=============== Original Data ===================");
+console.table(data)
+// console.log("============= Duplicates ===================");
+// console.table(newArray)
+
+console.log("============= Finding Duplicate Using ES6 ===================");
+
+const numData:number[] = [1, 3, 11, 5, 7, 5, 11, ]
+
+let newArray1_keys:number[] = data.map(item => item.id)
+let newArray1:IData[] = newArray1_keys.filter(item => newArray1_keys.indexOf(item) !== newArray1_keys.lastIndexOf(item) ).map(item => data[item])
+
+let usingSet = new Set(data.map(item => item.id))
+let usingSet_array:(IData | undefined)[] = [...usingSet, 17].map(item => data.find(itemX => itemX.id === item )  ).filter(item => item)
+
+console.log("Keys ", usingSet);
+console.table(usingSet_array)
+
+// console.log("Index of , ", data.indexOf(data[3]));
+// console.log("Last Index of , ", data.lastIndexOf(data[4]));
+// console.log("Equal , ", data[0] == data[1]);
+
+
+
+/* 
+
+The export {} statement indicates that the file is an ES module. 
+In TypeScript, any file containing a top-level import or export 
+is considered to be a module. Without top-level import or export 
+declarations, the file gets treated as a script whose contents 
+are available in the global scope (and to other modules). 
+
+This is what causes the name clash between our name variable 
+and the name variable declared in TypeScript global typings.
+
+*/
+export {}
