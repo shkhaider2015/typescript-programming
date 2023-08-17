@@ -1,0 +1,10 @@
+{
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">=1.22.19",
+    "node": ">=18.12.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
